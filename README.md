@@ -1,21 +1,21 @@
 # CECI EST UN TP CRUD SYMFONY DANS LE CADRE DE MA FORMATION
 ## Le but est de pratiquer les bases de Symfony en autonomie 
 
-    01 | installation Symfony Projet
+#### 01 | installation Symfony Projet
         • Mise en place du projet
         • Connexion à la base de données
 
-    02 | Entités
+#### 02 | Entités
         • Création de la base de données
         • Création des entités
         • Relations
         • Migrations
 
-    03 | Layout
+#### 03 | Layout
         • Menu principal
         • Layout général
 
-    04 | Controllers
+#### 04 | Controllers
         • Controllers
         • Créer les routes nécessaires au CRUD de chaque entité
         • Fixture (1 pilote / 1 qualification)
@@ -32,7 +32,7 @@
             - update
             - delete
 
-    04.1 | CRUD Qualification
+#### 04.1 | CRUD Qualification
         • Liste des qualifications
             - controller (finall)
             - template twig (héritage de base.html.twig)
