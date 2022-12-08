@@ -32,9 +32,9 @@
                             </td>
                             <td>{{ pilote.pilote.libelle }}</td>
                             <td>
-                                <a href="#" class="btn btn-dark">Détail</a>
-                                <a href="#" class="btn btn-warning">Modifier</a>
-                                <a href="#" class="btn btn-danger">Supprimer</a>
+                                <a href="{{path('show_pilote',{'id': pilote.id})}}" class="btn btn-dark">Détail</a>
+                                <a href="{{path('edit_pilote',{'id': pilote.id})}}" class="btn btn-warning">Modifier</a>
+                                <a href="{{path('delete_pilote',{'id': pilote.id})}}" class="btn btn-danger">Supprimer</a>
                             </td>
 
                         </tr>
@@ -49,7 +49,7 @@
                     </tbody>
                 </table>
 
-                <a href="#" class="btn btn-dark text-uppercase w-100">Ajouter un pilote</a>
+                <a href="{{path('create_pilote')}}" class="btn btn-primary text-uppercase w-100">Ajouter un pilote</a>
 
             </div>
         </div>
