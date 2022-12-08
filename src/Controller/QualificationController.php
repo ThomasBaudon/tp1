@@ -25,7 +25,7 @@ class QualificationController extends AbstractController
 
     /* SHOW */
     #[Route('/qualification/{id}', name: 'show_qualification', methods:['GET'])]
-    public function show(Request $request, Qualification $qualification, QualificationRepository $qualificationRepository): Response
+    public function show(Request $request, Qualification $qualification, int $id, QualificationRepository $qualificationRepository): Response
     {
         return $this->render('qualification/show.html.twig', [
             'qualification' => $qualification,
