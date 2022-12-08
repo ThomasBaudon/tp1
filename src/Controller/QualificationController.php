@@ -2,7 +2,9 @@
 
 namespace App\Controller;
 
+use App\Entity\Pilote;
 use App\Entity\Qualification;
+use App\Form\QualificationType;
 use App\Repository\QualificationRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -35,23 +37,52 @@ class QualificationController extends AbstractController
 
     /* EDIT */
     #[Route('/qualification/edit/{id}', name: 'edit_qualification', methods:['GET', 'POST'])]
-    public function edit(Request $request, QualificationRepository $qualificationRepository, Qualification $qualification)
+    public function edit(Request $request, int $id, QualificationRepository $qualificationRepository, Qualification $qualification)
     {
-
+        $form = $this->createForm(QualificationType::class, $qualification);
+        $form->handleRequest($request);
+        
+        
+        if ($form->isSubmitted() && $form->isValid()) {
+            
+                $qualificationRepository->save($qualification, true);
+            
+                return $this->redirectToRoute('app_qualification');
+            }
+            
+        return $this->render('qualification/create.html.twig', [
+                'formulaire' => $form->createView(),
+                'titre' => 'Modifier une qualification',
+        ]);
     }
 
-    /* ADD */
-    #[Route('/qualification/add', name: 'add_qualification', methods:['GET', 'POST'])]
-    public function add(Request $request, QualificationRepository $qualificationRepository, Qualification $qualification)
+    /* CREATE */
+    #[Route('/qualification/create', name: 'create_qualification', methods:['GET', 'POST'])]
+    public function create(Request $request, Qualification $qualification, QualificationRepository $qualificationRepository)
     {
-
+        $qualification = new Qualification();
+        $form = $this->createForm(QualificationType::class, $qualification);
+        $form->handleRequest($request);
+        
+        
+        if ($form->isSubmitted() && $form->isValid()) {
+            
+                $qualificationRepository->save($qualification, true);
+            
+                return $this->redirectToRoute('app_qualification');
+            }
+            
+        return $this->render('qualification/create.html.twig', [
+                'formulaire' => $form->createView(),
+                'titre' => 'Ajouter une qualification',
+        ]);
     }
 
 
 
-    /* SHOW */
+    /* DELETE */
     #[Route('/qualification/delete/{id}', name: 'delete_qualification', methods:['GET'])]
-    public function delete(Request $request, Qualification $qualification, QualificationRepository $qualificationRepository): Response
+    public function delete(Request $request, Qualification $qualification, int $id, QualificationRepository $qualificationRepository): Response
     {
 
         $qualificationRepository->remove($qualification, true);

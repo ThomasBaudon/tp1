@@ -3,7 +3,6 @@
 namespace App\Controller;
 
 use App\Entity\Pilote;
-use App\Entity\Qualification;
 use App\Form\FormulaireType;
 use App\Repository\PiloteRepository;
 use Symfony\Component\HttpFoundation\Request;
@@ -54,7 +53,7 @@ class PiloteController extends AbstractController
         ]);
     }
 
-    /* create */
+    /* CREATE */
     #[Route('/pilote/create', name: 'create_pilote', methods: ['GET', 'POST'])]
     public function create(Request $request, PiloteRepository $piloteRepository ): Response
     {

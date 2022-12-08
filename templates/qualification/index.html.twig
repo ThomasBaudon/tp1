@@ -27,8 +27,8 @@
                             <td>{{ qualification.libelle }}</td>
                             <td>
                                 <a href="{{path('show_qualification',{'id': qualification.id})}}" class="btn btn-primary"><i class="bi bi-person-circle"></i> Détail</a>
-                                <a href="#" class="btn btn-warning"><i class="bi bi-pencil-square"></i> Modifier</a>
-                                <a href="#" class="btn btn-danger"><i class="bi bi-x-circle"></i> Supprimer</a>
+                                <a href="{{path('edit_qualification',{'id': qualification.id})}}" class="btn btn-warning"><i class="bi bi-pencil-square"></i> Modifier</a>
+                                <a href="{{path('delete_qualification',{'id': qualification.id})}}" class="btn btn-danger"><i class="bi bi-x-circle"></i> Supprimer</a>
                             </td>
 
                         </tr>
@@ -43,7 +43,7 @@
                     </tbody>
                 </table>
 
-                <a href="#" class="btn btn-primary text-uppercase w-100">Ajouter une qualification</a>
+                <a href="{{path('create_qualification')}}" class="btn btn-primary text-uppercase w-100">Ajouter une qualification</a>
 
             </div>
         </div>
