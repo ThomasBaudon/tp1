@@ -2,8 +2,10 @@
 
 namespace App\Entity;
 
-use App\Repository\PiloteRepository;
+use App\Entity\Qualification;
 use Doctrine\ORM\Mapping as ORM;
+use App\Repository\PiloteRepository;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: PiloteRepository::class)]
 class Pilote
@@ -66,12 +68,12 @@ class Pilote
         return $this;
     }
 
-    public function getPilote(): ?qualification
+    public function getPilote(): ?Qualification
     {
         return $this->pilote;
     }
 
-    public function setPilote(?qualification $pilote): self
+    public function setPilote(?Qualification $pilote): self
     {
         $this->pilote = $pilote;
 
