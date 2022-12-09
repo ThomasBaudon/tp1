@@ -25,7 +25,7 @@
                             <td>{{ qualification.id }}</td>
                             <td>{{ qualification.code }}</td>
                             <td>{{ qualification.libelle }}</td>
-                            <td>
+                            <td class="text-right">
                                 <a href="{{path('show_qualification',{'id': qualification.id})}}" class="btn btn-primary"><i class="bi bi-person-circle"></i> Détail</a>
                                 <a href="{{path('edit_qualification',{'id': qualification.id})}}" class="btn btn-warning"><i class="bi bi-pencil-square"></i> Modifier</a>
                                 <a href="{{path('delete_qualification',{'id': qualification.id})}}" class="btn btn-danger"><i class="bi bi-x-circle"></i> Supprimer</a>

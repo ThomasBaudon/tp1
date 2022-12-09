@@ -2,7 +2,6 @@
 
 namespace App\Controller;
 
-use App\Entity\Pilote;
 use App\Entity\Qualification;
 use App\Form\QualificationType;
 use App\Repository\QualificationRepository;
@@ -21,6 +20,28 @@ class QualificationController extends AbstractController
         return $this->render('qualification/index.html.twig', [
             'controller_name' => 'QualificationController',
             'qualifications' => $qualifs,
+        ]);
+    }
+
+    /* CREATE */
+    #[Route('/qualification/create', name: 'create_qualification', methods:['GET', 'POST'])]
+    public function create(Request $request, QualificationRepository $qualificationRepository)
+    {
+        $qualification = new Qualification();
+        $form = $this->createForm(QualificationType::class, $qualification);
+        $form->handleRequest($request);
+        
+        
+        if ($form->isSubmitted() && $form->isValid()) {
+            
+                $qualificationRepository->save($qualification, true);
+            
+                return $this->redirectToRoute('app_qualification');
+            }
+            
+        return $this->render('qualification/create.html.twig', [
+                'formulaire' => $form->createView(),
+                'titre' => 'Ajouter une qualification',
         ]);
     }
 
@@ -56,27 +77,6 @@ class QualificationController extends AbstractController
         ]);
     }
 
-    /* CREATE */
-    #[Route('/qualification/create', name: 'create_qualification', methods:['GET', 'POST'])]
-    public function create(Request $request, Qualification $qualification, QualificationRepository $qualificationRepository)
-    {
-        $qualification = new Qualification();
-        $form = $this->createForm(QualificationType::class, $qualification);
-        $form->handleRequest($request);
-        
-        
-        if ($form->isSubmitted() && $form->isValid()) {
-            
-                $qualificationRepository->save($qualification, true);
-            
-                return $this->redirectToRoute('app_qualification');
-            }
-            
-        return $this->render('qualification/create.html.twig', [
-                'formulaire' => $form->createView(),
-                'titre' => 'Ajouter une qualification',
-        ]);
-    }
 
 
 
@@ -89,7 +89,7 @@ class QualificationController extends AbstractController
         return $this->redirectToRoute('app_qualification');
 
     }
-
+    
     
     
 }
